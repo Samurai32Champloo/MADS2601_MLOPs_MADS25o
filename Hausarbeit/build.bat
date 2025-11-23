@@ -1,4 +1,6 @@
 @echo off
+rmdir /S /Q log
+del /Q hauptdatei.pdf
 REM Erstelle Ausgabeordner, falls er nicht existiert
 if not exist log (
     mkdir log
