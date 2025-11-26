@@ -21,6 +21,37 @@ Aus der Analyse der unterschiedlichen Prozessmodelle lässt sich eine abstrahier
 Diese Einteilung bietet einen strukturierten Rahmen, um die unterschiedlichen Prozessmodelle aus der Literatur einzuordnen und die zentralen Zusammenhänge zwischen Aufgaben, Rollen und architektonischen Bausteinen sichtbar zu machen.
 Aufbauend auf diesen Überlegungen zeigt die generalisierte MLOps End-to-End Architektur von Kreuzberger et al. den gesamten Ablauf vom Start eines MLOps-Produkts bis zur Modell Bereitstellung \cite{kreuzberger2023}.
 \subsection{Projektinitialisierung und Datenerfassung}
+Wozniak et al. haben in einer Literaturanalyse verschiedener MLOps Prozessmodelle identifiziert und analysiert,
+welche Aufgabenpakete sich in der Literatur häufig wiederfinden. Dabei finden sie zunächst eine einleitende Stufe,
+die sich mit der Analyse des Geschäftsproblems befasst. Obwohl die untersuchten Veröffentlichungen diesen Schritt nicht immer vertiefen,
+zeigt die Übersicht dennoch eindeutig, dass eine betriebliche Problem und Zielanalyse in nahezu allen MLOps Ansätzen berücksichtigt wird \cite{wozniak2025}.
+
+Alle der betrachteten Veröffentlichungen beziehen sich in den jeweiligen MLOPs Ansätzen als Grundlage auf den Cross Industry Standard Process for Data Mining CRISP DM oder den Team Data Science Process TDSP. 
+Auch CRISP DM beginnt mit einer initialen Phase des Geschäftsverständnisses, in der Ziele bestimmt, Rahmenbedingungen geklärt und Projektziele definiert werden \cite{karamitsos2020}. 
+Obwohl CRISP DM nicht speziell für MLOps entwickelt wurde, macht es bereits an zentraler Stelle die Notwendigkeit einer strukturierten Initialisierung sichtbar. 
+TDSP führt diese Logik fort und erweitert sie um klar definierte Stakeholder und messbare Erfolgsindikatoren \cite{karamitsos2020}. 
+Beide Methoden zeigen, dass datengestützte Projekte traditionell mit einer präzisen Klärung von Zielen und Anforderungen beginnen.
+
+Testi et al. entwickeln auf Basis einer Literaturrecherche einen MLOps Ansatz, der die Phase des Geschäftsverständnisses ebenfalls an den Anfang stellt \cite{testi2022}. 
+Diese Phase umfasst die Sammlung und Dokumentation von Anforderungen, die Bestimmung messbarer Erfolgsindikatoren sowie die Ermittlung relevanter Daten \fixme{Sagt im grund das gleich wie TDSP vlt nochmal erwähnen hier}. 
+Früh festgelegte Ziele und geeignete Metriken bilden später die Grundlage für das Monitoring produktiver ML Systeme. 
+Die Bedeutung der Projektinitialisierung erstreckt sich hier deutlich über die reine Vorbereitung hinaus und wirkt direkt auf die spätere Betriebsphase.
+
+Eine technisch orientierte Ergänzung liefern Bachinger et al. \cite{bachinger2024}. Sie zeigen, dass ein MLOps Prozess nicht nur durch ein geschäftliches Problem ausgelöst werden kann, 
+sondern auch durch technische Signale innerhalb einer automatisierten Pipeline. 
+Die Identifikation neuer Daten, Strukturänderungen in vorhandenen Daten oder externe Aktualisierungen können den Workflow automatisch anstoßen. 
+Dadurch erhält die Projektinitialisierung eine dynamische Komponente, die eng mit Prinzipien kontinuierlicher Integration und Bereitstellung verbunden ist.
+
+Die Zusammenführung aller genannten Quellen zeigt ein konsistentes Muster. 
+Jede Form eines datengetriebenen Projekts beginnt mit der Klärung des zugrunde liegenden Problems, 
+der Definition der Ziele und der frühen Bewertung der verfügbaren Daten. 
+Die generalisierte Architektur nach Kreuzberger et al. erweitert diese etablierten Prinzipien um Anforderungen an Automatisierung, Skalierbarkeit und Betriebssicherheit. 
+Dadurch entsteht eine systematische Verbindung zwischen fachlicher Zielsetzung und technischer Umsetzung, die das Fundament für stabile und reproduzierbare ML Systeme bildet.
+
+Kreuzberger et al. beschreiben diese Projektinitialisierung als Startpunkt der gesamten generalisierte MLOps End-to-End Architektur. 
+Zunächst wird ein Geschäftsproblem identifiziert und analysiert. Anschließend entsteht eine Lösungsarchitektur, auf deren Grundlage das konkrete ML Problem präzise definiert wird. 
+Danach klären Data Engineers und Data Scientists gemeinsam den Datenbedarf, prüfen verfügbare Quellen, bewerten deren Qualität und kontrollieren die Existenz geeigneter Zielvariablen.
+Diese Aufgaben erzeugen die fachliche und technische Basis für die spätere Modellierung und bereiten den stabilen Produktivbetrieb vor\cite{kreuzberger2023}.
 
 \subsection{Datenvorbereitung und Feature Engineering}
 
