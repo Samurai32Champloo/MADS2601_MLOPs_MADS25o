@@ -1,7 +1,32 @@
-\section{Grundlagen und Projektkontext von Machine Learning}
+\section{Grundlagen von Machine Learning}
 
 \subsection{Was ist Machine Learning?}
+Machine Learning ist ein Teilgebiet der Künstlichen Intelligenz, das sich mit der Entwicklung von Systemen
+befasst, die aus Erfahrung lernen und ihre Leistung durch diese Erfahrung verbessern können
+\cite{ibm_ml}. Im Kern geht es darum, dass Computer Muster in großen Datenmengen
+selbstständig erkennen und diese Muster dann nutzen, um Vorhersagen zu treffen oder Entscheidungen zu treffen
+\cite{aws_whatis_ml}.
+
+Technisch unterscheidet man dabei grundsätzlich drei Lernparadigmen. Beim überwachten Lernen (Supervised Learning)
+wird das System mit bereits gelabelten Beispielen trainiert - etwa historischen Kreditanträgen mit der
+Information, ob ein Ausfall eintrat oder nicht
+\cite{svitla_credit_scoring}. Das System lernt, diese Muster
+auf neue, ungesehene Daten zu übertragen. Beim unüberwachten Lernen hingegen sucht das System eigenständig
+nach Strukturen in Daten ohne vorgegebene Labels, etwa zur Kundensegmentierung
+\cite{ibm_ml,konfuzio_ml}. Reinforcement Learning schließlich arbeitet nach dem Prinzip von Belohnung
+und Bestrafung - das System optimiert seine Entscheidungen durch Feedback aus der Umgebung
+\cite{ibm_ml}.
+
+Das Besondere an Machine Learning ist die Generalisierungsfähigkeit. Ein gut trainiertes Modell kann Muster,
+die es in den Trainingsdaten gelernt hat, auf völlig neue, unbekannte Situationen übertragen. Darum kann ein
+Betrugserkennungssystem, das mit tausenden historischen Transaktionen trainiert wurde, auch morgen noch
+verdächtige Muster in neuen Transaktionen erkennen
+\cite{use-cases-of-ml-in-finance-and-banking}.
+
+Im Endeffekt handelt es sich nur um ein statistisch-mathematisches Verfahren, das Korrelationen in Daten
+findet. Also: Je besser die Daten, desto besser sind auch die Ergebnisse. Schlechte oder verzerrte Daten führen
+zwangsläufig zu schlechten Modellen - ganz unabhängig davon, wie ausgefeilt der Algorithmus ist
+\cite{datasolut_ml}. Und genau das unterschätzen viele Unternehmen: die Datenqualität.
 
 
 \subsection{Häufige Praxisprobleme und PoC-Sackgassen}
-
