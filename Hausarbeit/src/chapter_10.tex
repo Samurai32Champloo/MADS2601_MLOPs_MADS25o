@@ -1,56 +1,61 @@
 \section{MLOps als Rahmenwerk für den zuverlässigen Betrieb von ML-Modellen}
-
 Ein ganzheitlicher Blick auf MLOps ist zentral, um die vielfältigen Zusammenhänge zwischen organisatorischen Abläufen,
 technischen Komponenten und grundlegenden Prinzipien moderner ML-Systeme zu verstehen. 
 MLOps wird dabei als Rahmen betrachtet, der die bestehenden Herausforderungen im Umgang mit datengetriebenen Modellen strukturiert adressiert und zugleich Orientierung für robuste, skalierbare und nachvollziehbare Prozesse bietet. 
 Die folgende Ausarbeitung zielt darauf ab, die wesentlichen Prozessschritte, Rollen und architektonischen Bausteine in einer abstrahierten, allgemein übertragbaren Form zusammenzuführen. 
-Zugleich bleibt MLOps ein flexibel adaptierbares Konzept, dessen konkrete Umsetzung stets von den spezifischen organisatorischen, technischen und projektbezogenen Rahmenbedingungen abhängt.
+Zugleich bleibt MLOps ein flexibel adaptierbares Konzept, dessen konkrete Umsetzung stets von den organisatorischen, technischen und projektbezogenen Rahmenbedingungen abhängt.
 
 
 \subsection{Das ganzheitliche MLOps-Workflow-Modell}
 Der Prozess der Operationalisierung von maschinellen Lernverfahren erfordert eine klar strukturierte Abfolge von Aufgaben,
 die sowohl die Automatisierung als auch die Integration von Modellen in produktive Systeme adressieren. 
-Ziel von MLOps ist es, manuelle Arbeitsschritte innerhalb von ML-Prozessen zu reduzieren und die Überführung von Proofs of Concept in die Produktion zu erleichtern \cite{kreuzberger2023}. 
+Ziel von MLOps ist es, manuelle Arbeitsschritte innerhalb von ML-Prozessen zu reduzieren und die Überführung von Proofs of Concept in die Produktion zu erleichtern \cite{kreuzberger2023}.
+
 In der Literatur werden vergleichbare Prozessstrukturen beschrieben, die jedoch in Bezeichnung, Schwerpunktsetzung und Integration der einzelnen Schritte variieren. 
 Grundlegende Phasen wie Datenvorbereitung, Feature Engineering, Modellentwicklung, Deployment und Monitoring werden in allen Arbeiten behandelt, 
 unterscheiden sich jedoch in der Abfolge, Unterteilung in Aufgabenpakete,
 der Verzahnung mit DevOps-Praktiken sowie der Einbindung kontinuierlicher Feedback- und Qualitätskontrollmechanismen \cite{kreuzberger2023}\cite{wozniak2025}\cite{wazir2023}\cite{berberi2025}. 
+
 So betonen Wozniak et al. die klare Trennung zwischen Daten- und Modellvorbereitung, gefolgt von Deployment und Monitoring,
 während Wazir et al. eine initiale Anforderungsanalyse vorsehen und die Datensammlung, Datenaufbereitung, Feature Engineering sowie das Training und die Evaluation der Modelle als eine zusammenhängende Phase der Modellentwicklung betrachten.
-Aus der Analyse der unterschiedlichen Prozessmodelle lässt sich eine abstrahierte Sicht auf MLOps gewinnen, in der die zentralen Aktivitäten in vier Bereiche zusammengefasst werden können, die Projektinitialisierung, Datenvorbereitung, Modellentwicklung und Workflow-Automatisierung umfassen.
-Diese Einteilung bietet einen strukturierten Rahmen, um die unterschiedlichen Prozessmodelle aus der Literatur einzuordnen und die zentralen Zusammenhänge zwischen Aufgaben, Rollen und architektonischen Bausteinen sichtbar zu machen.
+Aus der Analyse der unterschiedlichen Prozessmodelle lässt sich eine abstrahierte Sicht auf MLOps gewinnen, 
+in der die zentralen Aktivitäten in vier Bereiche zusammengefasst werden können, die Projektinitialisierung, Datenvorbereitung, Modellentwicklung und Workflow-Automatisierung umfassen.
+
+Diese Einteilung bietet einen strukturierten Rahmen, um die unterschiedlichen Prozessmodelle aus der Literatur einzuordnen und die zentralen Zusammenhänge zwischen Aufgaben, 
+Rollen und architektonischen Bausteinen sichtbar zu machen.
+
 Aufbauend auf diesen Überlegungen zeigt die generalisierte MLOps End-to-End Architektur von Kreuzberger et al. den gesamten Ablauf vom Start eines MLOps-Produkts bis zur Modell Bereitstellung \cite{kreuzberger2023}.
-\subsection{Projektinitialisierung und Datenerfassung}
+
+\subsection{MLOPs Produkt Initialisierung}
 Wozniak et al. haben in einer Literaturanalyse verschiedener MLOps Prozessmodelle identifiziert und analysiert,
 welche Aufgabenpakete sich in der Literatur häufig wiederfinden. Dabei finden sie zunächst eine einleitende Stufe,
 die sich mit der Analyse des Geschäftsproblems befasst. Obwohl die untersuchten Veröffentlichungen diesen Schritt nicht immer vertiefen,
 zeigt die Übersicht dennoch eindeutig, dass eine betriebliche Problem und Zielanalyse in nahezu allen MLOps Ansätzen berücksichtigt wird \cite{wozniak2025}.
 
-Alle der betrachteten Veröffentlichungen beziehen sich in den jeweiligen MLOPs Ansätzen als Grundlage auf den Cross Industry Standard Process for Data Mining CRISP DM oder den Team Data Science Process TDSP. 
-Auch CRISP DM beginnt mit einer initialen Phase des Geschäftsverständnisses, in der Ziele bestimmt, Rahmenbedingungen geklärt und Projektziele definiert werden \cite{karamitsos2020}. 
-Obwohl CRISP DM nicht speziell für MLOps entwickelt wurde, macht es bereits an zentraler Stelle die Notwendigkeit einer strukturierten Initialisierung sichtbar. 
+Alle der betrachteten Veröffentlichungen beziehen sich in den jeweiligen MLOPs Ansätzen als Grundlage auf den Cross Industry Standard Process for Data Mining (CRISP-DM) oder den Team Data Science Process (TDSP). 
+Auch CRISP-DM beginnt mit einer initialen Phase, in der Ziele bestimmt, Rahmenbedingungen geklärt und Projektziele definiert werden \cite{karamitsos2020}. 
+Obwohl CRISP-DM nicht speziell für MLOps entwickelt wurde, macht es bereits an zentraler Stelle die Notwendigkeit einer strukturierten Initialisierung sichtbar. 
 TDSP führt diese Logik fort und erweitert sie um klar definierte Stakeholder und messbare Erfolgsindikatoren \cite{karamitsos2020}. 
-Beide Methoden zeigen, dass datengestützte Projekte traditionell mit einer präzisen Klärung von Zielen und Anforderungen beginnen.
+Beide Vorgehensmodelle zeigen, dass datengestützte Projekte traditionell mit einer präzisen Klärung von Zielen und Anforderungen beginnen.
 
 Testi et al. entwickeln auf Basis einer Literaturrecherche einen MLOps Ansatz, der die Phase des Geschäftsverständnisses ebenfalls an den Anfang stellt \cite{testi2022}. 
-Diese Phase umfasst die Sammlung und Dokumentation von Anforderungen, die Bestimmung messbarer Erfolgsindikatoren sowie die Ermittlung relevanter Daten \fixme{Sagt im grund das gleich wie TDSP vlt nochmal erwähnen hier}. 
-Früh festgelegte Ziele und geeignete Metriken bilden später die Grundlage für das Monitoring produktiver ML Systeme. 
-Die Bedeutung der Projektinitialisierung erstreckt sich hier deutlich über die reine Vorbereitung hinaus und wirkt direkt auf die spätere Betriebsphase.
+Diese Phase umfasst die Sammlung und Dokumentation von Anforderungen, die Bestimmung messbarer Erfolgsindikatoren sowie die Ermittlung relevanter Daten.
+Dabei sind die festgelegte Ziele und geeignete Metriken später die Grundlage für das Monitoring produktiver ML Systeme. 
 
 Eine technisch orientierte Ergänzung liefern Bachinger et al. \cite{bachinger2024}. Sie zeigen, dass ein MLOps Prozess nicht nur durch ein geschäftliches Problem ausgelöst werden kann, 
 sondern auch durch technische Signale innerhalb einer automatisierten Pipeline. 
 Die Identifikation neuer Daten, Strukturänderungen in vorhandenen Daten oder externe Aktualisierungen können den Workflow automatisch anstoßen. 
-Dadurch erhält die Projektinitialisierung eine dynamische Komponente, die eng mit Prinzipien kontinuierlicher Integration und Bereitstellung verbunden ist.
+Dadurch erhält die Projektinitialisierung eine dynamische Komponente, die eng mit Prinzipien kontinuierlicher Integration und Automatisierung verbunden ist.
 
 Die Zusammenführung aller genannten Quellen zeigt ein konsistentes Muster. 
 Jede Form eines datengetriebenen Projekts beginnt mit der Klärung des zugrunde liegenden Problems, 
-der Definition der Ziele und der frühen Bewertung der verfügbaren Daten. 
-Die generalisierte Architektur nach Kreuzberger et al. erweitert diese etablierten Prinzipien um Anforderungen an Automatisierung, Skalierbarkeit und Betriebssicherheit. 
-Dadurch entsteht eine systematische Verbindung zwischen fachlicher Zielsetzung und technischer Umsetzung, die das Fundament für stabile und reproduzierbare ML Systeme bildet.
+der Definition der Ziele und einer Analyse der verfügbaren Daten.
 
-Kreuzberger et al. beschreiben diese Projektinitialisierung als Startpunkt der gesamten generalisierte MLOps End-to-End Architektur. 
-Zunächst wird ein Geschäftsproblem identifiziert und analysiert. Anschließend entsteht eine Lösungsarchitektur, auf deren Grundlage das konkrete ML Problem präzise definiert wird. 
-Danach klären Data Engineers und Data Scientists gemeinsam den Datenbedarf, prüfen verfügbare Quellen, bewerten deren Qualität und kontrollieren die Existenz geeigneter Zielvariablen.
+Die generalisierte Architektur nach Kreuzberger et al. erweitert dieses Muster um die Prinzipien der Automatisierung, Skalierbarkeit und Betriebssicherheit. 
+Diese Projektinitialisierung wird in der MLOps End-to-End Architektur dabei als MLOPs Produkt Initialisierung beschrieben. 
+Zunächst wird ein Geschäftsproblem identifiziert und analysiert. Anschließend wird eine Lösungsarchitektur entworfen, auf deren Grundlage die geeignete algorithmische Methodik festgelegt wird.
+Danach klären die Stakeholder gemeinsam den Datenbedarf, prüfen verfügbare Quellen, 
+bewerten deren Qualität und prüfen, ob die Daten die fachlich benötigte Aussagekraft für die Beantwortung des Geschäftsproblems besitzen.
 Diese Aufgaben erzeugen die fachliche und technische Basis für die spätere Modellierung und bereiten den stabilen Produktivbetrieb vor\cite{kreuzberger2023}.
 
 \subsection{Datenvorbereitung und Feature Engineering}
