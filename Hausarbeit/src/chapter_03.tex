@@ -1,7 +1,50 @@
 \section{Der Machine Learning Lifecycle}
 
 \subsection{Die Phasen des ML-Lebenszyklus}
+Machine Learning ist kein einmaliger Prozess, sondern eher ein kontinuierlicher Kreislauf mit mehreren
+aufeinanderfolgenden Phasen \cite{kreuzberger2023, wazir2023}. Es beginnt mit der
+eigentlichen Problemdefinition und Datensammlung: Welches Business-Problem soll gelöst werden? Welche
+Daten sind überhaupt verfügbar oder müssen erhoben werden? \cite{paleyes2022challenges}. Danach folgt die
+Explorationsphase: Daten werden gereinigt, analysiert und Features werden engineert - dieser Schritt
+ist oft sehr zeitintensiv und iterativ \cite{wozniak2025}. In dieser Phase werden auch erste Hypothesen
+getestet und die Qualität der verfügbaren Daten beurteilt - oft zeigt sich erst hier, ob die gesammelten
+Daten überhaupt für die ML-Aufgabe geeignet sind \cite{paleyes2022challenges}.
 
+In der Modellierungsphase trainiert der Data Scientist verschiedene Algorithmen, vergleicht die Performance und
+optimiert Hyperparameter \cite{paleyes2022challenges}. Das beste Modell wird dann in die Deploymentphase überführt -
+es wird containerisiert, in ein Serving-System integriert und dann in eine Produktionsumgebung gebracht \cite{kreuzberger2023}.
+Dieser Schritt ist oft kritischer als man denkt: Das Modell muss nicht nur mathematisch funktionieren, sondern auch
+in der realen Umgebung mit echten Datenvolumina, echten Latenzanforderungen und echten Fehlerszenarien zuverlässig laufen
+\cite{wazir2023}.
+
+In der Betriebsphase läuft das Modell kontinuierlich und macht Vorhersagen. Gleichzeitig
+werden seine Performance und die Datenqualität überwacht \cite{wozniak2025, testi2022}. Schließlich gibt es die
+Feedbackphase, in der echte Ergebnisse (Ground Truth) mit Vorhersagen verglichen werden \cite{paleyes2022challenges}.
+Dieser Zyklus beginnt dann von vorne - entweder durch regelmäßiges Retraining oder durch ereignisgesteuerte
+Retraining bei erkanntem Datendrift \cite{karamitsos2020}. Ohne diese Feedbackschleife altert das Modell schnell,
+denn die Realität ändert sich ständig: neue Kundengruppen erscheinen, wirtschaftliche Bedingungen verschieben sich,
+technische Systeme werden aktualisiert \cite{paleyes2022challenges}.
+
+Das Entscheidende: Dieser Kreislauf sollte nicht manuell, sondern automatisch ablaufen, damit Modelle kontinuierlich
+verbessert werden, ohne dass jedes Mal ein Mensch manuell eingreifen muss \cite{john2021}. Das bedeutet konkret:
+Datenaufbereitung, Model Training und Evaluation sollten automatisiert werden - ähnlich wie in klassischen
+Software-Entwicklungspipelines. Nur so kann gewährleistet werden, dass neue Erkenntnisse schnell ins Modell
+einfließen, dass Datenqualitätsprobleme früh erkannt werden, und dass ein kontinuierlicher Verbesserungsprozess
+stattfindet, ohne dass jedes Mal manuelle Schritte nötig sind \cite{john2021, karamitsos2020, testi2022}.
+
+\newpage
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{src/abbildungen/mlops-cycle.png}
+	\caption{Der MLOps-Zyklus: Entwicklung (links) und Betrieb (rechts) als kontinuierlicher Prozess \cite{databricks_mlops_cycle}}
+	\label{fig:mlops_cycle}
+\end{figure}
+
+Abbildung \ref{fig:mlops_cycle} visualisiert diesen Kreislauf: Der linke Teil zeigt die Entwicklungsphase 
+mit Datenaufbereitung, explorativer Analyse und Training, während der rechte Teil den Betriebszyklus mit 
+Deployment, Inferenz und Monitoring darstellt \cite{databricks_mlops_cycle}. Die Review-Phase verbindet beide Kreisläufe und sorgt dafür, 
+dass Erkenntnisse aus dem Betrieb zurück in die Entwicklung fließen - ein kontinuierlicher Verbesserungsprozess.
 
 \subsection{Typische Herausforderungen} % Reproduzierbarkeit, Übergabe, Drift ...
 
