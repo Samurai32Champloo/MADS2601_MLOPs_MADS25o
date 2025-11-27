@@ -19,7 +19,8 @@ der Verzahnung mit DevOps-Praktiken sowie der Einbindung kontinuierlicher Feedba
 So betonen Wozniak et al. die klare Trennung zwischen Daten- und Modellvorbereitung, gefolgt von Deployment und Monitoring,
 während Wazir et al. eine initiale Anforderungsanalyse vorsehen und die Datensammlung, Datenaufbereitung, Feature Engineering sowie das Training und die Evaluation der Modelle als eine zusammenhängende Phase der Modellentwicklung betrachten.
 Aus der Analyse der unterschiedlichen Prozessmodelle lässt sich eine abstrahierte Sicht auf MLOps gewinnen, 
-in der die zentralen Aktivitäten in vier Bereiche zusammengefasst werden können, die Projektinitialisierung, Datenvorbereitung, Modellentwicklung und Workflow-Automatisierung umfassen.
+in der die zentralen Aktivitäten in vier übergeordnete Funktionsbereiche eingeordnet werden können, nämlich die \textit{MLOps Produktinitialisierung}, den Bereich des \textit{Data Engineering} sowie die Modellentwicklung, 
+die in der Architektur zugleich als \textit{Experimentierzone} bezeichnet wird, und die \textit{Workflow Automatisierung} umfassen
 
 Diese Einteilung bietet einen strukturierten Rahmen, um die unterschiedlichen Prozessmodelle aus der Literatur einzuordnen und die zentralen Zusammenhänge zwischen Aufgaben, 
 Rollen und architektonischen Bausteinen sichtbar zu machen.
@@ -58,15 +59,38 @@ Danach klären die Stakeholder gemeinsam den Datenbedarf, prüfen verfügbare Qu
 bewerten deren Qualität und prüfen, ob die Daten die fachlich benötigte Aussagekraft für die Beantwortung des Geschäftsproblems besitzen.
 Diese Aufgaben erzeugen die fachliche und technische Basis für die spätere Modellierung und bereiten den stabilen Produktivbetrieb vor\cite{kreuzberger2023}.
 
-\subsection{Datenvorbereitung und Feature Engineering}
+\subsection{Data Engineering}
 
-\subsection{Modellentwicklung und Experimentierung}
+Auch die Phase der Datenvorbereitung ist ein zentraler Bestandteil aller betrachteten datengetriebenen Prozessmodelle. 
+In der Literatur wird sie jedoch unterschiedlich verortet. Einige Veröffentlichungen behandeln die Datenvorbereitung als eigenständige Prozessphase \cite{kreuzberger2023, wozniak2025, testi2022, john2021}, 
+während andere sie der Modellentwicklungsphase zuordnen \cite{wazir2023}. 
+Wiederum andere Modelle differenzieren stärker und trennen zwischen einer Phase des Datenverständnisses und einer Phase der Datenvorbereitung, wie es beim CRISP-DM Ansatz der Fall ist \cite{bachinger2024, karamitsos2020}.
+
+In der End-to-End Architektur nach Kreuzberger et al. ist der Bereich des Data Engineerings in eine Anforderungspipeline und eine Feature Engineering Pipeline unterteilt \cite{kreuzberger2023}. 
+In der Anforderungspipeline wird die Grundlage für die spätere Modellierung geschaffen, indem Rohdaten systematisch transformiert, bereinigt und in eine belastbare Struktur überführt werden. 
+Zunächst werden die grundlegenden Anforderungen für die Feature Engineering Pipeline definiert. 
+Dazu gehören Regeln für Transformationen wie Normalisierung oder Aggregationen sowie Vorgaben zur Bereinigung, um die Daten in ein verlässlich nutzbares Format zu überführen. 
+Diese Regeln werden fortlaufend verfeinert, sobald Rückmeldungen aus den nachgelagerten Bereichen der Modellentwicklung oder aus dem Monitoring der Produktivmodelle vorliegen \cite{kreuzberger2023}.
+
+In der Feature Engineering Pipeline werden diese Anforderungen technisch umgesetzt. 
+Die zuvor festgelegten Regeln ermöglichen eine automatisierte Datenverarbeitung. 
+Rohdaten können damit immer wieder in dasselbe Ausgangsformat überführt werden, was die Reproduzierbarkeit der Datengrundlage sicherstellt. 
+Bei Veränderungen der Rohdaten ist gewährleistet, dass die nachfolgenden Bereiche auf einer stabilen und konsistenten Datenstruktur aufbauen können. 
+Die Rohdaten können dabei aus dynamischen Streamingquellen wie Echtzeitdaten stammen oder als statische Batchdaten vorliegen, die einmalig eingespielt oder in regelmäßigen Abständen aktualisiert werden. 
+Im Rahmen der Pipeline werden sie extrahiert, transformiert und bereinigt, wobei die zuvor definierten Regeln zur Anwendung kommen und fortlaufend auf Basis Rückmeldungen weiter verfeinert werden \cite{kreuzberger2023}.
+
+Darauf folgt die Berechnung weiterführender Features auf Grundlage der transformierten und bereinigten Daten sowie der festgelegten Ableitungsregeln, 
+die kontinuierlich auf Basis neuer Erkenntnisse aus nachgelagerten Bereichen weiterentwickelt werden. 
+Abschließend werden die erzeugten Features über einen Ingestionprozess in ein zentrales Feature Store System geladen. 
+So entsteht eine robuste und reproduzierbare Datenbasis, die konsistent für Trainingsprozesse und produktive Anwendungen bereitgestellt wird \cite{kreuzberger2023}.
+
+\subsection{Experimentierzone}
 
 \subsubsection{Modell-Engineering und Hyperparameter-Optimierung}
 
 \subsubsection{Code-Commit, CI/CD-Trigger und Artefakterstellung}
 
-\subsection{Die automatisierte ML-Workflow-Pipeline}
+\subsection{Workflow Automatisierung}
 
 \subsubsection{Automatisches Training, Evaluierung und Registrierung}
 
