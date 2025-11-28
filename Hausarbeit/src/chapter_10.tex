@@ -98,7 +98,9 @@ das iterative Modelltraining mit einem systematischen Parameter-Tuning sowie der
 \end{figure}
 
 Der in \ref{fig:CD4ML} gezeigte CD4ML-Prozess beschreibt dabei den Modellentwicklungsprozess im Detail. 
-Neben den Prozessschritten wird hier auch beschrieben, wie der Code, die Daten und die entwickelten Modelle innerhalb des Prozesses miteinander integriert werden \cite{sato2019cd4ml}.
+Neben den Prozessschritten wird hier auch beschrieben, wie Code, Daten und die entwickelten Modelle innerhalb des Prozesses miteinander interagieren \cite{sato2019cd4ml}.
+
+\subsubsection{Modell-Engineering}
 
 In einem ersten Schritt werden die im Feature Store hinterlegten Daten abgerufen, einer eingehenden Prüfung unterzogen und für den Modellbildungsprozess aufbereitet. 
 Bei überwachtem Lernen umfasst dies insbesondere die Aufteilung der Daten in Trainings- und Testdaten. 
@@ -108,13 +110,18 @@ Im Anschluss erfolgt die Evaluation des trainierten Modells unter Verwendung gee
 Bei überwachtem Lernen werden hierbei gelabelte Testdaten als Ground Truth herangezogen, während bei unüberwachtem Lernen die Evaluierung auf der Fähigkeit des Modells basiert, 
 Muster oder Strukturen in den Daten zu erkennen \cite{kreuzberger2023}. Die Modellleistung wird anhand verschiedener Metriken bewertet. 
 Zu den gebräuchlichen Metriken zählen Klassifikationsmetriken wie Genauigkeit, Präzision und Recall, Fehleranalysemetriken wie die Konfusionsmatrix \cite{sokolova2009}, 
-kombinierte Metriken wie der F1-Score sowie weitere quantitative Bewertungsgrößen \cite{lipton2014}, die je nach Aufgabenstellung zur Beurteilung der Leistungsfähigkeit herangezogen werden. 
+kombinierte Metriken wie der F1-Score \cite{lipton2014} sowie weitere quantitative Bewertungsgrößen , die je nach Aufgabenstellung zur Beurteilung der Leistungsfähigkeit herangezogen werden. 
 Häufig wird zudem eine Baseline definiert, die als Referenzpunkt dient, um die erzielten Ergebnisse einordnen und die Verbesserung durch das trainierte Modell objektiv beurteilen zu können \cite{wolfrath2024}. 
-Nach der Evaluation mehrerer Modelle innerhalb der Experimentierphase wird das bestperformende Modell ausgewählt und für den weiteren Einsatz bestimmt \cite{kreuzberger2023, sato2019cd4ml, wozniak2025, wazir2023}.
 
-\subsubsection{Modell-Engineering und Hyperparameter-Optimierung}
+\subsubsection{Modell-Deployment}
 
-\subsubsection{Code-Commit, CI/CD-Trigger und Artefakterstellung}
+Nach der Evaluation mehrerer Modelle innerhalb der Experimentierphase wird das bestperformende Modell ausgewählt und für den weiteren Einsatz bestimmt \cite{kreuzberger2023, sato2019cd4ml, wozniak2025, wazir2023}. 
+Damit das Modell auch in anderen Projekten genutzt werden kann, ist ein Deployment erforderlich, bei dem es als Artefaktdatei in einem Model Registry gespeichert wird \cite{kreuzberger2023}. 
+Ein Artefakt umfasst dabei alle durch den Trainingsprozess erzeugten Objekte, die für Reproduzierbarkeit, Bereitstellung oder Nachvollziehbarkeit des Modells relevant sind \cite{sato2019cd4ml}.
+
+Die Komplexität der Bereitstellung hängt vom gewählten Szenario ab. In einfachen Fällen reicht die Bereitstellung einer neuen Modellversion im Model Registry, 
+wodurch das Modellartefakt über eine CI/CD-Komponente verfügbar gemacht wird \cite{testi2022}. In anspruchsvolleren Umgebungen wird das Modell als eigenständiger Dienst bereitgestellt, 
+der über Programmierschnittstellen genutzt werden kann, oder als eigenständiges Datenobjekt, das von Anwendungen bedarfsgerecht geladen und aktualisiert werden kann \cite{kreuzberger2023}.
 
 \subsection{Workflow Automatisierung}
 
