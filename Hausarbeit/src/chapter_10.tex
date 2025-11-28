@@ -57,7 +57,7 @@ Diese Projektinitialisierung wird in der MLOps End-to-End Architektur dabei als 
 Zunächst wird ein Geschäftsproblem identifiziert und analysiert. Anschließend wird eine Lösungsarchitektur entworfen, auf deren Grundlage die geeignete algorithmische Methodik festgelegt wird.
 Danach klären die Stakeholder gemeinsam den Datenbedarf, prüfen verfügbare Quellen, 
 bewerten deren Qualität und prüfen, ob die Daten die fachlich benötigte Aussagekraft für die Beantwortung des Geschäftsproblems besitzen.
-Diese Aufgaben erzeugen die fachliche und technische Basis für die spätere Modellierung und bereiten den stabilen Produktivbetrieb vor\cite{kreuzberger2023}.
+Diese Aufgaben erzeugen die fachliche und technische Basis für die spätere Modellierung und bereiten den stabilen Produktivbetrieb vor \cite{kreuzberger2023}.
 
 \subsection{Data Engineering}
 
@@ -124,6 +124,31 @@ wodurch das Modellartefakt über eine CI/CD-Komponente verfügbar gemacht wird \
 der über Programmierschnittstellen genutzt werden kann, oder als eigenständiges Datenobjekt, das von Anwendungen bedarfsgerecht geladen und aktualisiert werden kann \cite{kreuzberger2023}.
 
 \subsection{Workflow Automatisierung}
+
+Innerhalb der End-to-End Architektur bildet die Workflow Automatisierung den verbindenden und zugleich stabilisierenden Kern des gesamten MLOps Prozesses. 
+Sie sorgt für die koordinierte Ausführung aller Arbeitsschritte, die notwendig sind, 
+um aus bereitgestellten Features ein produktionsreifes Modell zu erzeugen und es zuverlässig in den operativen Betrieb zu überführen \cite{kreuzberger2023}.
+Dieser Bereich ist für die technische Umsetzung der Automatisierung verantwortlich und stellt sicher, dass die Kernaufgaben reproduzierbar, 
+skalierbar und weitestgehend ohne manuelle Eingriffe ablaufen können \cite{kreuzberger2023, john2021}.
+
+Die Workflow Automatisierung wird dabei durch eine zentrale Orchestrierungskomponente gesteuert, 
+die alle notwendigen Prozessschritte ausführt, überwacht und miteinander verknüpft \cite{kreuzberger2023, john2021}. 
+Sobald ein Training ausgelöst wird, koordiniert die Orchestrierung die Extraktion der versionierten Merkmale aus dem Feature Store, 
+die automatisierte Datenaufbereitung und Validierung sowie die darauf folgende Modellerstellung anhand der für die Experimentierphase definierten Einstellungen \cite{john2021}. 
+Dadurch wird gewährleistet, dass Trainingsläufe stets mit konsistenten Daten und vordefinierten Parametern erfolgen. 
+Die Orchestrierung sorgt zugleich dafür, dass alle benötigten Artefakte aus den jeweiligen Speichern geladen werden und jeder Schritt in isolierten Ausführungsumgebungen stattfindet. 
+Dies erhöht die Reproduzierbarkeit und verhindert unbeabsichtigte Wechselwirkungen zwischen verschiedenen Trainingsprozessen \cite{kreuzberger2023}.
+
+Während der Trainingsabläufe werden sämtliche Metadaten zentral dokumentiert. Dazu gehören verwendete Parameter, Metriken, Laufzeiten sowie alle Informationen, 
+die den Ursprung der Daten und des Codes belegen \cite{john2021}.
+Sobald ein Modell die festgelegten Qualitätskriterien erfüllt, wird es exportiert und in einem Model Registry abgelegt, 
+das sowohl die Modellversionen als auch die zugehörigen Konfigurationen verwaltet \cite{john2021}. 
+Modelle, die den Status eines produktionsreifen Ergebnisses erreichen, werden im Anschluss automatisch an die Bereitstellungsprozesse übergeben \cite{kreuzberger2023}.
+
+Ein permanentes Monitoring überwacht die Leistungsfähigkeit sowohl des Modells als auch der bereitstellenden Infrastruktur. 
+Werden Veränderungen in den Daten oder ein Rückgang der Modellgüte festgestellt, leitet die Überwachungskomponente automatisch Rückmeldungen in vorgelagerte Bereiche weiter \cite{testi2022, berberi2025, john2021}. 
+Diese Rückmeldungen können den Start eines erneuten Trainings auslösen oder dazu führen, dass Datenaufbereitungsprozesse angepasst werden. 
+Auf diese Weise entsteht ein lernfähiges Gesamtsystem, das sich an neue Gegebenheiten anpasst und durch automatisierte Wiederholungen stabil bleibt \cite{kreuzberger2023, testi2022, berberi2025, john2021}.
 
 \subsubsection{Automatisches Training, Evaluierung und Registrierung}
 
