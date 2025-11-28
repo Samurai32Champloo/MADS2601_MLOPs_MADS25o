@@ -5,7 +5,6 @@ MLOps wird dabei als Rahmen betrachtet, der die bestehenden Herausforderungen im
 Die folgende Ausarbeitung zielt darauf ab, die wesentlichen Prozessschritte, Rollen und architektonischen Bausteine in einer abstrahierten, allgemein übertragbaren Form zusammenzuführen. 
 Zugleich bleibt MLOps ein flexibel adaptierbares Konzept, dessen konkrete Umsetzung stets von den organisatorischen, technischen und projektbezogenen Rahmenbedingungen abhängt.
 
-
 \subsection{Das ganzheitliche MLOps-Workflow-Modell}
 Der Prozess der Operationalisierung von maschinellen Lernverfahren erfordert eine klar strukturierte Abfolge von Aufgaben,
 die sowohl die Automatisierung als auch die Integration von Modellen in produktive Systeme adressieren. 
@@ -24,8 +23,16 @@ die in der Architektur zugleich als \textit{Experimentierzone} bezeichnet wird, 
 
 Diese Einteilung bietet einen strukturierten Rahmen, um die unterschiedlichen Prozessmodelle aus der Literatur einzuordnen und die zentralen Zusammenhänge zwischen Aufgaben, 
 Rollen und architektonischen Bausteinen sichtbar zu machen.
+\newpage
 
-Aufbauend auf diesen Überlegungen zeigt die generalisierte MLOps End-to-End Architektur von Kreuzberger et al. den gesamten Ablauf vom Start eines MLOps-Produkts bis zur Modell Bereitstellung \cite{kreuzberger2023}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1\textwidth]{src/abbildungen/end-to_end_architecture.png}
+	\caption{End-to-end MLOps Architektur und workflow mit funktionalen Komponenten and Rollen \cite{kreuzberger2023}}
+	\label{fig:end_to_end_architecture}	
+\end{figure}
+
+Aufbauend auf diesen Überlegungen zeigt die generalisierte MLOps End-to-End Architektur in Abbildung \ref{fig:end_to_end_architecture} den gesamten Ablauf vom Start eines MLOps-Produkts bis zur Modell Bereitstellung \cite{kreuzberger2023}.
 
 \subsection{MLOPs Produkt Initialisierung}
 Wozniak et al. haben in einer Literaturanalyse verschiedener MLOps Prozessmodelle identifiziert und analysiert,
