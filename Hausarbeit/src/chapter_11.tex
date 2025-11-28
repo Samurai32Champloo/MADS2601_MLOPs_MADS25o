@@ -3,7 +3,7 @@
 Da nun das End-to-End Architekturmodell mit seinen Prozessschritten erläutert wurde, ist es sinnvoll, im nächsten Schritt die technischen Komponenten dieser Architektur näher zu betrachten. 
 Dabei ist insbesondere von Interesse, welche Aufgaben sie erfüllen, welche Herausforderungen mithilfe dieser Komponenten adressiert werden, 
 in welcher Weise sie miteinander interagieren und welche Anbieter in diesem Zusammenhang relevant sind.
-Auf die MLOps als Weiterentwicklung der bekannten DevOps wurde bereits in \fixme{queerverweis auf section{Von DevOps zu MLOps} einbauen} eingegangen. 
+Auf die MLOps als Weiterentwicklung der bekannten DevOps wurde bereits in Abschnitt ~\nameref{sec:von-devops-zu-mlops} eingegangen. 
 In diesem Kapitel werden zunächst grundlegende Komponenten aus dem DevOps Umfeld untersucht, die ebenfalls im Kontext der MLOps Anwendung finden. 
 Anschließend wird dargestellt, welche zusätzlichen Komponenten speziell für MLOps erforderlich sind und wie sich diese mit den bestehenden Strukturen integrieren lassen. 
 
@@ -16,24 +16,61 @@ Anschließend wird dargestellt, welche zusätzlichen Komponenten speziell für M
 
 In Abbildung \ref{fig:MLOps_reference_architecture} ist eine Zusammenfassung zentraler MLOps Komponenten sowie ausgewählter etablierter Lösungen dargestellt, 
 die die Beziehung zwischen DevOps und MLOps veranschaulicht \cite{wozniak2025}.
-\newpage
 
 \subsection{Klassische DevOps-Komponenten}
 
+
+\subsubsection{Integrated Development Environment (IDE)}
+\fixme{Hier fehlen noch die Quellen}
+Die Integrated Development Environment dient als zentrale Arbeitsumgebung für Entwickler, in der Code erstellt, 
+getestet und verwaltet wird. Sie unterstützt die Implementierung von Software in einem konsistenten und strukturierten Workflow. 
+In der MLOps-Praxis werden IDEs oft in Verbindung mit Versionskontrollsystemen eingesetzt, um die Nachverfolgbarkeit und Reproduzierbarkeit von ML-Code zu gewährleisten. 
+Beliebte IDEs sind VSCode und PyCharm.
+
 \subsubsection{Source Code Repository}
+Source Code Repositories sind essenziell für die Versionskontrolle und das kollaborative Arbeiten an Code. 
+Sie ermöglichen es mehreren Entwicklern, parallel Änderungen einzupflegen und Codeänderungen nachzuverfolgen \cite{kreuzberger2023}. 
+Typische Implementierungen sind GitHub \cite{kreuzberger2023,wozniak2025, wazir2023}, GitLab \cite{kreuzberger2023, wozniak2025, wazir2023}, Bitbucket \cite{kreuzberger2023} und Gitea \cite{kreuzberger2023}. 
 
 \subsubsection{CI/CD-Komponente}
+Die CI/CD-Komponente sorgt für kontinuierliche Integration, Auslieferung und Bereitstellung. 
+Sie automatisiert Build-, Test- und Deployment-Prozesse und gibt Entwicklern schnell Feedback über den Erfolg einzelner Schritte. Dazu gehören das Packaging von Code, 
+die Ausführung von Unit- und Integrationstests sowie die Bereitstellung von Containern über Plattformen wie Docker \cite{kreuzberger2023, wozniak2025, wazir2023}. 
+In Abbildung \ref{fig:MLOps_reference_architecture} wird dargestellt dass das Code Package als Docker Image in Docker Hub abgelegt wird. 
+Docker Hub dient als Container Repository das unterschiedliche Images aufnehmen kann und damit eine nachvollziehbare Versionierung ermöglicht \cite{wozniak2025}. 
+Zusätzlich stellt Docker Hub standardisierte Basisumgebungen bereit die häufig in Entwicklungs- und Betriebsumgebungen genutzt werden.
+Zu den verbreiteten Werkzeugen für die Umsetzung von CI/CD Prozessen gehören Jenkins \cite{kreuzberger2023, wozniak2025, wazir2023} GitHub Actions \cite{kreuzberger2023, wozniak2025} und GitLab CI \cite{kreuzberger2023,wozniak2025}.
 
-\subsubsection{Container Orchestrierung}
-
+\subsubsection{Orchestrierungskomponente}
+Workflow-Orchestrierungskomponenten steuern die Ausführung von ML-Pipelines,sowie die Abhängigkeiten und Datenflüsse der einzelner Schritte \cite{kreuzberger2023}. 
+Dies ermöglicht ein effizientes Management komplexer Pipelines, einschließlich Datenextraktion, Modelltraining, Inferenz und Integration in Anwendungen \cite{kreuzberger2023, wozniak2025}. 
+Die Orchestrierungskomponente bildet das Herzstück eines MLOps Prozesses \cite{wozniak2025}. 
+Aus Abbildung \ref{fig:MLOps_reference_architecture} wird deutlich, dass sowohl klassische DevOps als auch MLOps Komponenten ihre Ergebnisse über verschiedene Pipelines an die Orchestrierungseinheit liefern. 
+Diese fasst die Ergebnisse zusammen und führt sie in einem Docker Container in einer abgeschlossenen Umgebung aus.
+Bekannte Tools sind Airflow \cite{kreuzberger2023, wozniak2025}, Kubeflow \cite{kreuzberger2023, wozniak2025, wazir2023}, 
+Luigi \cite{kreuzberger2023}, AWS Sage Maker \cite{kreuzberger2023, wozniak2025} und Azure \cite{kreuzberger2023}.
 
 \subsection{MLOps-spezifische Kernkomponenten}
-
-
+\fixme{Ab hier müssen die Quellen noch einmal genau geprüft werden und der text an scih sollte nochmal grünbdlich refined werden.}
 \subsubsection{Feature Store System}
+Feature Stores ermöglichen eine zentrale Speicherung und Verwaltung von Features, die für Trainings- und Produktionsinferenz verwendet werden. 
+Sie bestehen typischerweise aus einer Offline-Datenbank für Experimente und einer Online-Datenbank für Echtzeitvorhersagen \cite{kreuzberger2023, wozniak2025}. 
+Beispiele sind Google Feast \cite{kreuzberger2023, wozniak2025}, AWS Feature Store \cite{kreuzberger2023, wozniak2025}, Tecton.ai \cite{kreuzberger2023} und Hopsworks.ai \cite{kreuzberger2023, wozniak2025}.
 
 \subsubsection{Model Registry}
+Die Model Registry speichert zentral trainierte Modelle inklusive zugehöriger Metadaten, wie Trainingsparameter, Performance-Metriken und Modelllineage. 
+Sie ermöglicht Versionierung, Nachverfolgung und reproduzierbare Bereitstellung von Modellen \cite{kreuzberger2023, wozniak2025}. 
+Implementierungen umfassen MLflow \cite{kreuzberger2023, wozniak2025, wazir2023}, AWS SageMaker Model Registry \cite{kreuzberger2023, wozniak2025}, 
+Microsoft Azure ML Model Registry \cite{kreuzberger2023, wozniak2025} und Neptune.ai \cite{kreuzberger2023}.
 
 \subsubsection{Trainingsinfrastruktur und Modell-Serving}
+Die Trainingsinfrastruktur stellt die notwendigen Rechenressourcen bereit, typischerweise CPUs, RAM und GPUs, entweder lokal oder in verteilten Cloud-Umgebungen. 
+Für Deep-Learning-Workloads wird die Nutzung von GPUs empfohlen, während für Edge-Szenarien optimierte Modelle wie quantisierte neuronale Netze sinnvoll sein können \cite{kreuzberger2023, wozniak2025}. 
+Modell-Serving-Komponenten ermöglichen die Bereitstellung trainierter Modelle für Online- oder Batch-Inferenz. 
+Typische Umsetzungen verwenden Containerisierung über Docker \cite{wozniak2025} und Kubernetes \cite{wozniak2025} oder Frameworks wie TensorFlow Serving \cite{kreuzberger2023} und KServe \cite{kreuzberger2023, wazir2023}.
 
 \subsubsection{Monitoring-Komponente}
+Monitoring-Komponenten überwachen kontinuierlich die Leistung von Modellen, z.B. Vorhersagegenauigkeit, sowie die Stabilität der MLOps-Infrastruktur, einschließlich CI/CD und Orchestrierung \cite{kreuzberger2023, wozniak2025}. 
+Bekannte Lösungen sind Prometheus mit Grafana \cite{kreuzberger2023, wozniak2025}, ELK-Stack \cite{kreuzberger2023}, 
+Evidently AI \cite{wozniak2025} sowie die Monitoring-Funktionen von Kubeflow \cite{kreuzberger2023, wazir2023}, MLflow \cite{kreuzberger2023, wazir2023} und AWS SageMaker \cite{kreuzberger2023, wozniak2025}. 
+Das Monitoring erlaubt frühzeitige Erkennung von Daten- oder Modellabweichungen und unterstützt die kontinuierliche Verbesserung von Modellen.
