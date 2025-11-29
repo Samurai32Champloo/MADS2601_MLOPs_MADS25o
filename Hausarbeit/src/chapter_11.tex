@@ -51,12 +51,19 @@ Bekannte Tools sind Airflow \cite{kreuzberger2023, wozniak2025}, Kubeflow \cite{
 Luigi \cite{kreuzberger2023}, AWS Sage Maker \cite{kreuzberger2023, wozniak2025} und Azure \cite{kreuzberger2023}.
 
 \subsection{MLOps-spezifische Kernkomponenten}
-\fixme{Ab hier müssen die Quellen noch einmal genau geprüft werden und der text an scih sollte nochmal grünbdlich refined werden.}
 \subsubsection{Feature Store System}
-Feature Stores ermöglichen eine zentrale Speicherung und Verwaltung von Features, die für Trainings- und Produktionsinferenz verwendet werden. 
-Sie bestehen typischerweise aus einer Offline-Datenbank für Experimente und einer Online-Datenbank für Echtzeitvorhersagen \cite{kreuzberger2023, wozniak2025}. 
-Beispiele sind Google Feast \cite{kreuzberger2023, wozniak2025}, AWS Feature Store \cite{kreuzberger2023, wozniak2025}, Tecton.ai \cite{kreuzberger2023} und Hopsworks.ai \cite{kreuzberger2023, wozniak2025}.
+Feature Stores dienen der zentralen Verwaltung und Bereitstellung von Features für das Modell Engineering \cite{kreuzberger2023}. 
+Sie umfassen in der Regel eine Offline Datenbank für Experimente sowie eine Online Datenbank für Anwendungen mit geringen Latenzanforderungen \cite{kreuzberger2023}. 
+Zu den bekannten Lösungen gehören Google Feast \cite{kreuzberger2023, wozniak2025}, der AWS Feature Store \cite{kreuzberger2023}, Tecton ai \cite{kreuzberger2023} und Hopsworks ai \cite{kreuzberger2023}.
 
+Die technische Ausgestaltung kann sich deutlich unterscheiden. 
+Einige Systeme beinhalten eine integrierte Datenbank und bilden damit eine vollständige Umgebung für Speicherung und Zugriff. 
+Andere Systeme konzentrieren sich auf den verwaltenden Zugriff und benötigen eine externe Datenbank als Grundlage \cite{wozniak2025}.
+
+Obwohl der Feature Store in der Literatur häufig erwähnt wird, zeigt \cite{wozniak2025}, dass diese Komponente bislang nur selten operativ eingesetzt wird, 
+da ihr Nutzen den zusätzlichen Aufwand gegenüber einer regulären Datenbank in vielen Fällen nicht überwiegt.
+
+\fixme{Ab hier müssen die Quellen noch einmal genau geprüft werden und der text an scih sollte nochmal grünbdlich refined werden.}
 \subsubsection{Model Registry}
 Die Model Registry speichert zentral trainierte Modelle inklusive zugehöriger Metadaten, wie Trainingsparameter, Performance-Metriken und Modelllineage. 
 Sie ermöglicht Versionierung, Nachverfolgung und reproduzierbare Bereitstellung von Modellen \cite{kreuzberger2023, wozniak2025}. 
