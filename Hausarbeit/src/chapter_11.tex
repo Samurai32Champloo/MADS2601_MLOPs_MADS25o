@@ -59,22 +59,16 @@ Zu den bekannten Lösungen gehören Google Feast \cite{kreuzberger2023, wozniak2
 Die technische Ausgestaltung kann sich deutlich unterscheiden. 
 Einige Systeme beinhalten eine integrierte Datenbank und bilden damit eine vollständige Umgebung für Speicherung und Zugriff. 
 Andere Systeme konzentrieren sich auf den verwaltenden Zugriff und benötigen eine externe Datenbank als Grundlage \cite{wozniak2025}.
-
 Obwohl der Feature Store in der Literatur häufig erwähnt wird, zeigt \cite{wozniak2025}, dass diese Komponente bislang nur selten operativ eingesetzt wird, 
 da ihr Nutzen den zusätzlichen Aufwand gegenüber einer regulären Datenbank in vielen Fällen nicht überwiegt.
 
-\fixme{Ab hier müssen die Quellen noch einmal genau geprüft werden und der text an scih sollte nochmal grünbdlich refined werden.}
 \subsubsection{Model Registry}
-Die Model Registry speichert zentral trainierte Modelle inklusive zugehöriger Metadaten, wie Trainingsparameter, Performance-Metriken und Modelllineage. 
-Sie ermöglicht Versionierung, Nachverfolgung und reproduzierbare Bereitstellung von Modellen \cite{kreuzberger2023, wozniak2025}. 
-Implementierungen umfassen MLflow \cite{kreuzberger2023, wozniak2025, wazir2023}, AWS SageMaker Model Registry \cite{kreuzberger2023, wozniak2025}, 
+Die Model Registry speichert zentral trainierte Modelle inklusive zugehöriger Metadaten, wie Trainingsparameter und Performance-Metriken \cite{kreuzberger2023, wozniak2025}. 
+Es ermöglicht Versionierung und reproduzierbare Bereitstellung von Modellen \cite{kreuzberger2023}. 
+Implementierungen umfassen MLflow \cite{kreuzberger2023, wozniak2025}, AWS SageMaker Model Registry \cite{kreuzberger2023}, 
 Microsoft Azure ML Model Registry \cite{kreuzberger2023, wozniak2025} und Neptune.ai \cite{kreuzberger2023}.
 
-\subsubsection{Trainingsinfrastruktur und Modell-Serving}
-Die Trainingsinfrastruktur stellt die notwendigen Rechenressourcen bereit, typischerweise CPUs, RAM und GPUs, entweder lokal oder in verteilten Cloud-Umgebungen. 
-Für Deep-Learning-Workloads wird die Nutzung von GPUs empfohlen, während für Edge-Szenarien optimierte Modelle wie quantisierte neuronale Netze sinnvoll sein können \cite{kreuzberger2023, wozniak2025}. 
-Modell-Serving-Komponenten ermöglichen die Bereitstellung trainierter Modelle für Online- oder Batch-Inferenz. 
-Typische Umsetzungen verwenden Containerisierung über Docker \cite{wozniak2025} und Kubernetes \cite{wozniak2025} oder Frameworks wie TensorFlow Serving \cite{kreuzberger2023} und KServe \cite{kreuzberger2023, wazir2023}.
+\fixme{Ab hier müssen die Quellen noch einmal genau geprüft werden und der text an scih sollte nochmal grünbdlich refined werden.}
 
 \subsubsection{Monitoring-Komponente}
 Monitoring-Komponenten überwachen kontinuierlich die Leistung von Modellen, z.B. Vorhersagegenauigkeit, sowie die Stabilität der MLOps-Infrastruktur, einschließlich CI/CD und Orchestrierung \cite{kreuzberger2023, wozniak2025}. 
