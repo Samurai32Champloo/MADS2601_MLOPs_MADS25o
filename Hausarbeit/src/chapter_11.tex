@@ -68,10 +68,19 @@ Es ermöglicht Versionierung und reproduzierbare Bereitstellung von Modellen \ci
 Implementierungen umfassen MLflow \cite{kreuzberger2023, wozniak2025}, AWS SageMaker Model Registry \cite{kreuzberger2023}, 
 Microsoft Azure ML Model Registry \cite{kreuzberger2023, wozniak2025} und Neptune.ai \cite{kreuzberger2023}.
 
-\fixme{Ab hier müssen die Quellen noch einmal genau geprüft werden und der text an scih sollte nochmal grünbdlich refined werden.}
+\subsubsection{Trainingsinfrastruktur und Model-Serving Komponente}
+Die Trainingsinfrastruktur stellt die grundlegenden Rechenressourcen zur Verfügung, 
+die für das Modelltraining erforderlich sind. Dazu zählen insbesondere CPUs, Arbeitsspeicher und GPUs \cite{kreuzberger2023}. 
+Diese Infrastruktur kann lokal betrieben werden, wobei jedoch nur eingeschränkte Skalierung möglich ist, oder in Cloud Umgebungen, 
+die eine flexible und dynamische Bereitstellung von Rechenressourcen für trainingsintensive Szenarien erlauben \cite{kreuzberger2023, wozniak2025}. 
+Für die Bereitstellung und Verwaltung von Rechencluster haben sich Plattformen wie Kubernetes \cite{kreuzberger2023}, 
+Red Hat OpenShift \cite{kreuzberger2023}, Flower \cite{wozniak2025} und Determined \cite{wozniak2025} etabliert.
+
+Für die Bereitstellung der trainierten Modelle kommen Modell-Serving-Komponenten zum Einsatz. 
+Die Auslieferung kann etwa über eine REST Schnittstelle erfolgen \cite{kreuzberger2023}.
 
 \subsubsection{Monitoring-Komponente}
-Monitoring-Komponenten überwachen kontinuierlich die Leistung von Modellen, z.B. Vorhersagegenauigkeit, sowie die Stabilität der MLOps-Infrastruktur, einschließlich CI/CD und Orchestrierung \cite{kreuzberger2023, wozniak2025}. 
-Bekannte Lösungen sind Prometheus mit Grafana \cite{kreuzberger2023, wozniak2025}, ELK-Stack \cite{kreuzberger2023}, 
-Evidently AI \cite{wozniak2025} sowie die Monitoring-Funktionen von Kubeflow \cite{kreuzberger2023, wazir2023}, MLflow \cite{kreuzberger2023, wazir2023} und AWS SageMaker \cite{kreuzberger2023, wozniak2025}. 
-Das Monitoring erlaubt frühzeitige Erkennung von Daten- oder Modellabweichungen und unterstützt die kontinuierliche Verbesserung von Modellen.
+Monitoring-Komponenten überwachen kontinuierlich die Leistung von Modellen, etwa die Vorhersagegenauigkeit, sowie die Stabilität der MLOps-Infrastruktur \cite{kreuzberger2023, wozniak2025}. 
+Bekannte Lösungen sind Grafana \cite{kreuzberger2023, wozniak2025}, der ELK-Stack \cite{kreuzberger2023}, 
+Evidently AI \cite{wozniak2025} sowie die Monitoring-Funktionen von Kubeflow \cite{kreuzberger2023, wazir2023} und MLflow \cite{kreuzberger2023}. 
+Das Monitoring ermöglicht die frühzeitige Erkennung von Daten- oder Modellabweichungen und unterstützt die kontinuierliche Verbesserung von Modellen.
